@@ -1,0 +1,109 @@
+3)  To Add the Discount Range 
+
+API:  http://localhost:9090/discount/discount-slabs
+method: POST
+body:
+
+[
+	{
+        "customerType": "Regular",
+        "minRange": "0",
+        "maxRange": "5000",
+        "discountPercent": "0",
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "customerType": "Regular",
+        "minRange": "5000",
+        "maxRange": "10000",
+        "discountPercent": "10",
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "customerType": "Regular",
+        "minRange": "10000",
+        "discountPercent": "20",
+        "isMaxAmountSet": "N"
+    },
+    {
+        "customerType": "Premium",
+        "minRange": "0",
+        "maxRange": "4000",
+        "discountPercent": "10",
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "customerType": "Premium",
+        "minRange": "4000",
+        "maxRange": "8000",
+        "discountPercent": "15",
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "customerType": "Premium",
+        "minRange": "8000",
+        "maxRange": "12000",
+        "discountPercent": "20",
+        "isMaxAmountSet": "Y"
+    },
+        {
+        "customerType": "Premium",
+        "minRange": "12000",
+       
+        "discountPercent": "30",
+        "isMaxAmountSet": "N"
+    }
+]
+
+2) To List the Discount slab Range 
+
+API:  http://localhost:9090/discount/discount-slabs?customerType=regular
+method: GET
+
+Response
+
+[
+    {
+        "discountRangeId": 24,
+        "customerType": "Regular",
+        "minRange": 0.0,
+        "maxRange": 5000.0,
+        "discountPercent": 0.0,
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "discountRangeId": 25,
+        "customerType": "Regular",
+        "minRange": 5000.0,
+        "maxRange": 10000.0,
+        "discountPercent": 10.0,
+        "isMaxAmountSet": "Y"
+    },
+    {
+        "discountRangeId": 26,
+        "customerType": "Regular",
+        "minRange": 10000.0,
+        "maxRange": 0.0,
+        "discountPercent": 20.0,
+        "isMaxAmountSet": "N"
+    }
+]
+
+
+3) To Calculate Discount
+API: http://localhost:9090/discount/discount
+method: POST
+body: 
+{
+    "customerType": "premium",
+    "purchaseAmount": "12000"
+}
+
+response:
+{
+    "customerType": "premium",
+    "purchaseAmount": 12000.0,
+    "discountAmount": 1800.0,
+    "billAmount": 10200.0
+}
+
